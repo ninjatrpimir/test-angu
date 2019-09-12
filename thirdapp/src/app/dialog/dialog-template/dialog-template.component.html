@@ -1,0 +1,12 @@
+<div class="custom-dialog {{modalType}}">
+	<h2 mat-dialog-title>{{modalTitle}}</h2>
+	<mat-dialog-content>
+		<p>
+			{{modalMessage}}
+		</p>
+	</mat-dialog-content>
+	<mat-dialog-actions align="end">
+		<button mat-button mat-raised-button [mat-dialog-close]="false">No</button>
+		<button mat-raised-button color="warn" [mat-dialog-close]="true">Yes</button>
+	</mat-dialog-actions>
+</div>

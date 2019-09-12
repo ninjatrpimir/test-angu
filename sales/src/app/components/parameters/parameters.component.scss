@@ -1,0 +1,15 @@
+.line {
+    border-top: 2px solid rgba(150, 150, 150, 0.2);
+    padding-left: 1px;
+    .parameters {
+        float: left;
+        font-size: 14px;
+        padding-right: 25px;
+        padding-top: 5px;
+        padding-bottom: 1px;
+
+        .parameter-name {
+            opacity: 0.6;
+        }
+    }
+}

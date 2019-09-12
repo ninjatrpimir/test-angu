@@ -1,0 +1,218 @@
+$hoverColor: #525362;
+$textColor: #fff;
+$menuHeight: 60px;
+$padding: 50px;
+
+dx-menu {
+    float: left;
+}
+
+::ng-deep .top-menu,
+::ng-deep .themes-menu {
+    .dx-context-menu-container-border {
+        border: none;
+    }
+
+    .dx-context-menu-content-delimiter {
+        background-color: transparent;
+    }
+
+    .dx-menu-item {
+        .dx-menu-item-content {
+            padding: 0;
+        }
+    }
+}
+
+
+::ng-deep .top-menu {
+    .dx-menu-horizontal {
+        height: 100%;
+    }
+
+    .menu-item {
+        height: $menuHeight;
+        line-height: $menuHeight;
+        font-size: 16px;
+        padding: 0 20px;
+        display: block;
+        text-decoration: none;
+    }
+
+    &.dx-menu {
+        .dx-menu-item-wrapper {
+            .dx-menu-item {
+                &.dx-menu-item-expanded,
+                &.dx-state-hover,
+                &.dx-state-focused {
+                    background-color: $hoverColor;
+                }
+
+                .menu-item {
+                    color: $textColor;
+                }
+            }
+
+            &:first-child {
+                width: 290px;
+                text-align: right;
+                position: relative;
+        
+                &:after {
+                    font: 20px/1 DXIcons;
+                    content: "\F001";
+                    color: #fff;
+                    position: absolute;
+                    top: 22px;
+                    right: 16px;
+                }
+        
+                .menu-item {
+                    padding-right: 46px;
+                }
+            }
+        }
+    }
+
+    &.dx-context-menu {
+        .dx-submenu {
+            .menu-item {
+                width: 286px;
+            }
+            .dx-menu-item-wrapper {
+                border-bottom: 1px solid rgba(0,0,0,.18);
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep .themes-menu {
+    &.dx-menu {
+        .dx-menu-item {
+            height: $menuHeight;
+            line-height: $menuHeight;
+    
+            &.dx-menu-item-expanded,
+            &.dx-state-hover,
+            &.dx-state-focused {
+                background-color: $hoverColor;
+            }
+    
+            .dx-menu-item-content {
+                .dx-icon {
+                    display: block;
+                    width: 32px;
+                    height: 32px;
+                    margin: 14px;
+                }
+            }
+        }
+    }
+
+    &.dx-context-menu {
+        .dx-submenu {
+            padding-bottom: 15px;
+    
+            .dx-menu-items-container {
+                &:before {
+                    content: "Color Schemes";
+                    display: block;
+                    margin: 20px 14px 15px;
+                    font-family: 'Open Sans Condensed','HelveticaNeue-CondensedBold',Helvetica,'Arial Narrow',Calibri,Arial,'Lucida Grande',sans-serif;
+                    font-size: 18px;
+                }
+            }
+    
+            .dx-menu-item {
+                height: 45px;
+                line-height: 40px;
+    
+                .dx-menu-item-content {
+                    .dx-icon {
+                        display: inline-block;
+                        width: 32px;
+                        height: 32px;
+                        margin: 0px 14px;
+                    }
+
+                    .dx-menu-item-text {
+                        padding-left: 0;
+                        padding-right: 40px;
+
+                        &.dx-theme-accent-as-text-color {
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                &.dx-state-focused {
+                    .dx-menu-item-text {
+                        &.dx-theme-accent-as-text-color {
+                            color: $textColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-container {
+    background-color: rgba(53, 53, 53, 0.9);
+    .content {
+        min-width: 900px - 2*$padding;
+        max-width: 1200px;
+        padding: 0 $padding;
+        margin: 0 auto;
+        height: $menuHeight;
+        color: $textColor;
+
+        .logo {
+            font-family: 'Open Sans Condensed','HelveticaNeue-CondensedBold',Helvetica,'Arial Narrow',Calibri,Arial,'Lucida Grande',sans-serif;
+            font-size: 18px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            float: left;
+        }
+
+        nav {
+            float: right;
+            height: 100%;
+
+            .help {
+                float: left;
+                padding: 14px;
+                cursor: pointer;
+
+                .info-link {
+                    border: 1px solid $textColor;
+                    width: 30px;
+                    height: 30px;
+                    display: inline-block;
+                    text-align: center;
+                    border-radius: 15px;
+                    line-height: 30px;
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    &::selection {
+                        background-color: transparent;
+                        color: #fff;
+                    }
+                }
+
+                &:hover {
+                    background-color: $hoverColor;
+                }
+            }
+        }
+    }
+}

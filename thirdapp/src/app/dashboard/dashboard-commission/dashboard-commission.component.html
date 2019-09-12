@@ -1,0 +1,131 @@
+<!-- <h2>dashboard(makni naslov)asdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h2>
+<ul class="commissions">
+    <li *ngFor="let commission of commissions$ | async"
+      [class.selected]="commission.id === selectedId">
+      <a [routerLink]="['/dashboard-commission', commission.id]">
+        <span class="badge">{{ commission.id }}</span>{{ commission.name }}
+      </a>
+    </li>
+  </ul> -->
+
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="fa fa-users text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Employees working/total</p>
+                            <p class="card-title">
+
+                            <!--<div class="lds-roller" ng-if="loadingEmployee"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>-->
+                            <!--<span ng-if="!loadingEmployee">{{nrEmployeeThatWorked}}/{{totalEmployees}}</span>-->
+                            <span>
+                                <div class="lds-roller" ng-if="loadingEmployee"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                                {{nrEmployeeThatWorked}}/{{totalEmployees}}
+                            </span>
+
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i> Total nr. of employees
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-money-coins text-success"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Today Order total</p>
+                            <div class="lds-roller" ng-if="loadingOrders"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            <p class="card-title" ng-if="!loadingOrders">{{summary_net}}<p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i> Payments from orders in {{currency}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-money-coins text-danger"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <div class="lds-roller" ng-if="loadingOrdersYesterday"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            <p class="card-category">Last {{todayDayName}} order amount</p>
+                            <p class="card-title" ng-if="!loadingOrdersYesterday">{{summary_net_yesterday}}<p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i>Payments from orders in {{currency}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-favourite-28 text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Comparison</p>
+                            <div class="lds-roller" ng-if="loadingOrdersYesterday"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+                            <p class="card-title" ng-if="!loadingOrdersYesterday">
+
+                                <span ng-if="CalculateDifference > 0" class="text-success">{{CalculateDifference}} %</span>
+                                <span ng-if="CalculateDifference < 0" class="text-danger">{{CalculateDifference}} %</span>
+
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats" ng-click="loadData()">
+                    <i class="fa fa-info" ></i>Today vs Last {{todayDayName}}  <button type="button" class="btn btn-outline-secondary btn-sm pull-right" q-tooltip="Reload to get latest information"><i class="fa fa-refresh text-white"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

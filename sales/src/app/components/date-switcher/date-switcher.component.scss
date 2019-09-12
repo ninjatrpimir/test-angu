@@ -1,0 +1,46 @@
+.switcher {
+    display: inline-block;
+    position: relative;
+    margin: 0 20px;
+    opacity: 0.6;
+    font-size: 14px;
+    padding-top: 2px;
+    line-height: 20px;
+    z-index: 1;
+
+    .date {
+        display: inline-block;
+        width: 70px;
+        text-align: center;
+
+        &.day {
+            width: 90px;
+        }
+    }
+
+    .icon {
+        cursor: pointer;
+        font-size: 20px;
+        opacity: 0.6;
+        position: absolute;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .dx-icon-spinleft {
+        left: -25px;
+    }
+
+    .dx-icon-spinright {
+        right: -25px;
+    }
+
+    .disabled {
+        opacity: 0.25;
+        cursor: default;
+    }
+}

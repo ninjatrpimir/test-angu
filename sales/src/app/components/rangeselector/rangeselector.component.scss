@@ -1,0 +1,23 @@
+.container {
+    position: relative;
+    height: 90px;
+    overflow: hidden;
+
+    .icon {
+        display: inline-block;
+        font-size: 25px;
+        opacity: 0.6;
+        position: absolute;
+        z-index: 1;
+        top: 30px;
+        cursor: pointer;
+        &.disabled {
+            cursor: default;
+            opacity: 0.25;
+        }
+    }
+
+    .dx-icon-chevronright {
+        right: 0;
+    }
+}

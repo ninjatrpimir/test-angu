@@ -1,0 +1,278 @@
+<div ng-if="hide_note" ng-click="hide_it()" class="alert alert-warning alert-dismissible fade show border rounded" role="alert">
+    <h4 class="text-uppercase font-weight-bolder">Holy guacamole!</h4>
+    <div class="clear-fix"></div>
+    <h6 class="font-weight-bold">{{free_trial_message}}</h6>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="fa fa-users text-warning"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Employees working/total</p>
+                            <p class="card-title">
+
+                            <!--<div class="lds-roller" ng-if="loadingEmployee"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>-->
+                            <!--<span ng-if="!loadingEmployee">{{nrEmployeeThatWorked}}/{{totalEmployees}}</span>-->
+                            <span>
+                                <div class="lds-roller" ng-if="loadingEmployee"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                                {{nrEmployeeThatWorked}}/{{totalEmployees}}
+                            </span>
+
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i> Total nr. of employees
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-money-coins text-success"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Today Order total</p>
+                            <div class="lds-roller" ng-if="loadingOrders"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            <p class="card-title" ng-if="!loadingOrders">{{summary_net}}<p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i> Payments from orders in {{currency}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-money-coins text-danger"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <div class="lds-roller" ng-if="loadingOrdersYesterday"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            <p class="card-category">Last {{todayDayName}} order amount</p>
+                            <p class="card-title" ng-if="!loadingOrdersYesterday">{{summary_net_yesterday}}<p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i>Payments from orders in {{currency}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i class="nc-icon nc-favourite-28 text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-category">Comparison</p>
+                            <div class="lds-roller" ng-if="loadingOrdersYesterday"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+                            <p class="card-title" ng-if="!loadingOrdersYesterday">
+
+                                <span ng-if="CalculateDifference > 0" class="text-success">{{CalculateDifference}} %</span>
+                                <span ng-if="CalculateDifference < 0" class="text-danger">{{CalculateDifference}} %</span>
+
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats" ng-click="loadData()">
+                    <i class="fa fa-info" ></i>Today vs Last {{todayDayName}}  <button type="button" class="btn btn-outline-secondary btn-sm pull-right" q-tooltip="Reload to get latest information"><i class="fa fa-refresh text-white"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card ">
+            <div class="card-header ">
+                <h5 class="card-title">Your account</h5>
+                <p class="card-category">Details:</p>
+            </div>
+            <div class="card-body ">
+
+                <div class="text-secondary  small">Merchant name: <span class="text-secondary font-weight-bold text-uppercase smaller">{{merchantObject.merchantName}}</span></div>
+                <div class="text-secondary mt-1 small">City/Country: <span class="text-secondary font-weight-bold text-uppercase smaller">{{merchantObject.city}} - {{merchantObject.country}}</span></div>
+                <div class="text-secondary mt-1 small">MerchantID: <span class="text-secondary font-weight-bold text-uppercase smaller">{{merchantObject.merchantID}}</span></div>
+                <div class="text-secondary mt-1 small">{{str_logged}}  <span class="text-secondary font-weight-bold text-uppercase smaller">{{merchantObject.employeeName}}, {{merchantObject.employeeRole}}</span></div>
+                <div class="text-secondary mt-1 small">{{str_currency}}: <span class="text-secondary font-weight-bold text-uppercase smaller">{{merchantObject.merchantCurrency}}</span></div>
+                <div class="text-secondary mt-1 small">{{str_timezone}}: <span class="text-secondary font-weight-bold text-uppercase smaller ">{{merchantObject.merchantTimezone}}</span></div>
+
+
+
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i> This is your basic account info
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card ">
+            <div class="card-header ">
+                <h5 class="card-title">Settings</h5>
+                <p class="card-category">Current:</p>
+            </div>
+            <div class="card-body ">
+
+                <div class="text-secondary small">{{str_businessDay_start}}: <span class="text-secondary font-weight-bold text-uppercase smaller">{{startTime}}</span></div>
+                <div class="text-secondary mt-1 small">{{start_of_week_day}} <span class="text-secondary font-weight-bold text-uppercase smaller">{{CalendarDayStartName}}</span></div>
+                <div class="text-secondary mt-1 small">{{selectedDateFormatLabel}} <span class="text-secondary font-weight-bold text-uppercase smaller">{{dateFormatForDatafieldTrends}}</span></div>
+                <div class="text-secondary mt-1 small">Fixed/scaled settings saved: <span class="text-secondary font-weight-bold text-uppercase smaller">{{merchantObject.commissionsProperty_save}}</span></div>
+                <div class="text-secondary mt-1 small">Categories settings saved: <span class="text-secondary font-weight-bold text-uppercase smaller">{{merchantObject.employee_category_commission_load_saved}}</span></div>
+
+                <!--who can access analytics-->
+                <div class="text-secondary mt-1 small">{{str_roles}}:
+                    <span ng-if="defaultRoles" class="text-secondary font-weight-bold smaller">{{str_role1}}, {{str_role2}}, {{str_role3}}</span>
+                    <span ng-if='!defaultRoles && merchantObject.securitySettings[0].value' class="text-secondary font-weight-bold smaller">{{merchantObject.securitySettings[0].text}}</span>
+                    <span ng-if='!defaultRoles && merchantObject.securitySettings[1].value' class="text-secondary font-weight-bold smaller">, {{merchantObject.securitySettings[1].text}}</span>
+                    <span ng-if='!defaultRoles && merchantObject.securitySettings[2].value' class="text-secondary font-weight-bold smaller">, {{merchantObject.securitySettings[2].text}}</span>
+
+                </div>
+                
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="nc-icon nc-settings"></i> These are the settings you can adjust in the main menu
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card ">
+            <div class="card-header ">
+                <h5 class="card-title">Employees by Net</h5>
+                <!--<p class="card-category">Todays best employees</p>-->
+            </div>
+            <div class="card-body ">
+                <div ng-show="!loadingEmployee" dx-chart="chartOptions1"></div>
+            </div>
+            <div class="card-footer ">
+                <div class="legend">
+                    <!--<i class="fa fa-circle text-primary"></i> Opened-->
+                    <!--<i class="fa fa-circle text-warning"></i> Read-->
+                    <!--<i class="fa fa-circle text-danger"></i> Deleted-->
+                    <!--<i class="fa fa-circle text-gray"></i> Unopened-->
+                </div>
+            <div class="lds-roller" ng-if="loadingEmployee"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i> Today's best employees by Order NET amount
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card ">
+            <div class="card-header ">
+                <h5 class="card-title">by nr.orders</h5>
+                <!--<p class="card-category">Todays hardworking employees</p>-->
+            </div>
+            <div class="card-body ">
+                <div ng-show="!loadingEmployee" dx-chart="chartOptions2"></div>
+            </div>
+            <div class="card-footer ">
+                <div class="legend">
+                    <!--<i class="fa fa-circle text-primary"></i> Opened-->
+                    <!--<i class="fa fa-circle text-warning"></i> Read-->
+                    <!--<i class="fa fa-circle text-danger"></i> Deleted-->
+                    <!--<i class="fa fa-circle text-gray"></i> Unopened-->
+                </div>
+            <div class="lds-roller" ng-if="loadingEmployee"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+            <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i> Today's employees with most nr. of Orders
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card ">
+            <div class="card-header ">
+                <h5 class="card-title">by refund amount</h5>
+                <!--<p class="card-category">Todays unlucky employees</p>-->
+            </div>
+            <div class="card-body ">
+                <vertical-graph> </vertical-graph>
+            </div>
+            <div class="card-footer ">
+                <div class="legend">
+                    <!--<i class="fa fa-circle text-primary"></i> Opened-->
+                    <!--<i class="fa fa-circle text-warning"></i> Read-->
+                    <!--<i class="fa fa-circle text-danger"></i> Deleted-->
+                    <!--<i class="fa fa-circle text-gray"></i> Unopened-->
+                </div>
+            <div class="lds-roller" ng-if="loadingEmployee"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+            <hr>
+                <div class="stats">
+                    <i class="fa fa-info"></i> Today's employees with overall refund amount
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<h2>Commissions napokon</h2>
+<div class="cart-item" *ngFor="let cdata of cloverData">
+    <li>{{ cdata.merchantID }}</li>
+    <li>{{ cdata.tierName }}</li>
+  </div>
+
+<router-outlet></router-outlet>
+
